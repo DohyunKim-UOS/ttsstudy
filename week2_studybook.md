@@ -297,12 +297,3 @@ $$\begin{align} {D_M}^2 & = (x-\mu)^T {\sum}^{-1} (x- \mu) \\
 
 
 이상으로 자습서 내용은 모두 끝입니다! 
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {inlineMath: [['$', '$']]},
-    messageStyle: "none",
-    "HTML-CSS": { availableFonts: "TeX", preferredFont: "TeX" },
-  });
-</script>
