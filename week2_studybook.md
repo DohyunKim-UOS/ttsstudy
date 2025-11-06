@@ -43,13 +43,13 @@ $-\frac{(x-\mu)^2} {2 \sigma^2}$를 고차원으로 바꿔가며 MVN으로 확�
 
 $$-\frac{(x-\mu)^2} {2 \sigma^2} = -\frac{1}{2} \times (x-\mu) \times \sigma^{-2} \times (x-\mu)$$
 
-에 대해 $\mathbf{x}=\begin{bmatrix} x1 \\ x2 \end{bmatrix}, \mathbf{\mu} =\begin{bmatrix} \mu1 \\ \mu2 \end{bmatrix} $라 하고 $\mathbf{\sum}$은 공분산 행렬이라 하면, 벡터의 내적 표현(제곱)에 의해 $-\frac{1}{2} \times (x-\mu) \times \sigma^{-2} \times (x-\mu)$는 아래와 같이 표현됩니다.
+에 대해 $\bold{x}=\begin{bmatrix} x1 \\ x2 \end{bmatrix}, \bold{\mu} =\begin{bmatrix} \mu1 \\ \mu2 \end{bmatrix} $라 하고 $\bold{\sum}$은 공분산 행렬이라 하면, 벡터의 내적 표현(제곱)에 의해 $-\frac{1}{2} \times (x-\mu) \times \sigma^{-2} \times (x-\mu)$는 아래와 같이 표현됩니다.
 
-$$-\frac{1}{2} \times (x-\mu) \times \sigma^{-2} \times (x-\mu) = -\frac{1} {2} (\mathbf{x}-\mathbf{\mu})^T {\mathbf{\sum}}^{-2}(\mathbf{x}-\mathbf{\mu})$$
+$$-\frac{1}{2} \times (x-\mu) \times \sigma^{-2} \times (x-\mu) = -\frac{1} {2} (\bold{x}-\bold{\mu})^T {\bold{\sum}}^{-2}(\bold{x}-\bold{\mu})$$
 
-가 되며, 분포의 pdf 적분값이 1이 되도록 계수를 구하면 $\frac {1} {(2\pi)^{n/2}|\mathbf{\sum}|^{1/2}}$이므로, 최종적으로 MVN의 pdf는
+가 되며, 분포의 pdf 적분값이 1이 되도록 계수를 구하면 $\frac {1} {(2\pi)^{n/2}|\bold{\sum}|^{1/2}}$이므로, 최종적으로 MVN의 pdf는
 
-$$f(\mathbf{x}; \mathbf{\mu}, \mathbf{\sigma^2}) = \frac {1} {(2\pi)^{n/2} |\mathbf{\sum}|^{1/2}}\exp{\left[-\frac{1}{2}(\mathbf{x} - \mathbf{\mu})^T \mathbf{\sum}^{-2}(\mathbf{x}-\mathbf{\mu})\right]}$$
+$$f(\bold{x}; \bold{\mu}, \bold{\sigma^2}) = \frac {1} {(2\pi)^{n/2} |\bold{\sum}|^{1/2}}\exp{\left[-\frac{1}{2}(\bold{x} - \bold{\mu})^T \bold{\sum}^{-2}(\bold{x}-\bold{\mu})\right]}$$
 
 편의상 이후 벡터들에 대한 bold 표현을 생략하겠습니다... bold가 아니더라도 적절히 벡터라고 이해해 주시면 감사하겠습니다!!
 
@@ -64,33 +64,33 @@ $$f(\mathbf{x}; \mathbf{\mu}, \mathbf{\sigma^2}) = \frac {1} {(2\pi)^{n/2} |\mat
 
 정방행렬 $A$가 아래 조건을 만족시키면 행렬 $A$는 준정부호행렬이다.
 
-$$\mathbf{x}^T A \mathbf{x} \geqslant 0, \forall \mathbf{x}$$
+$$\bold{x}^T A \bold{x} \geqslant 0, \forall \bold{x}$$
 
-직관적으로 살펴보면, 어떠한 $\mathbf{x}$도 $A$를 음으로 만들어내지 못한다는 것입니다.
+직관적으로 살펴보면, 어떠한 $\bold{x}$도 $A$를 음으로 만들어내지 못한다는 것입니다.
 
 일차원 상에서의 예시를 들어보면 분산을 살펴볼 수 있겠죠! 분산의 정의는 아래와 같습니다.
 
-$$\frac {1} {n} \sum_{i=1} ^{n} {(\mathbf{X}_i - \mu)^2} = \sigma^2$$
+$$\frac {1} {n} \sum_{i=1} ^{n} {(\bold{X}_i - \mu)^2} = \sigma^2$$
 
 사실 우리가 너무나도 익숙한 이 분산은 확률 변수가 $X$ 하나일 때의 분산입니다. 그리고 맨날 익숙하게 배웠던 공분산 행렬은 확률 변수가 여러개인 joint 상황에 대한 분산의 역할을 수행하는 것이죠.
 
 일차원 수직선 상에서 $\sigma^2$이 항상 0보다 크거나 같듯, 공분산 행렬도 항상 0보다 크거나 같아야 하지 않을까요?? 근데 여기에는 약간의 문제가 있습니다. 
 
-일변수 상황에서의 분산은 상수이기 때문에 0보다 크거나 같다는 것이 우리에게 직관적으로 너무나 와닿습니다. 하지만 공분산 행렬 $\mathbf{\sum}$은 행렬인걸료??
+일변수 상황에서의 분산은 상수이기 때문에 0보다 크거나 같다는 것이 우리에게 직관적으로 너무나 와닿습니다. 하지만 공분산 행렬 $\bold{\sum}$은 행렬인걸료??
 
 그래서 우리는 공분산 행렬을 임의의 1차원 벡터로 사영했을 때(이게 사실 1차원 상수로 만드는 과정이죠! $\sigma^2\prime$ 이라고 보시면 될 것 같아요! 우리가 일차원에서 다루는 $\sigma^2$은 축이 $X$ 축인 것이고, $\sigma^2\prime$은 임의의 일차원 축에 사영한 것이라고 생각하면 될 것 같네요!) 
 
 이런식으로 사영을 이용해 차원을 꾸겨 공분산 행렬을 1차원으로 바라보면 항상 양수여야 합니다!
 
-따라서 임의의 벡터 $\mathbf{v}$에 대해 $x$를 $v$에 스칼라사영한 벡터를 $Y$라 하면, 정의에 의해 
+따라서 임의의 벡터 $\bold{v}$에 대해 $x$를 $v$에 스칼라사영한 벡터를 $Y$라 하면, 정의에 의해 
 
-$$Y=\mathbf{v}^T x$$
-$$\begin{align} Var(\mathbf{Y}) &= Var(\mathbf{v}^T x) \\
-& = \mathbf{v}^T Var(x) (\mathbf{v}^T)^T\quad&(\because Var(Ax) = A^T Var(x) A)\\
-& = \mathbf{v}^T Var(x) \mathbf{v} &(\because (v^T)^T = v)\\
-& = \mathbf{v}^T \sum \mathbf{v} \end{align}$$
+$$Y=\bold{v}^T x$$
+$$\begin{align} Var(\bold{Y}) &= Var(\bold{v}^T x) \\
+& = \bold{v}^T Var(x) (\bold{v}^T)^T\quad&(\because Var(Ax) = A^T Var(x) A)\\
+& = \bold{v}^T Var(x) \bold{v} &(\because (v^T)^T = v)\\
+& = \bold{v}^T \sum \bold{v} \end{align}$$
 
-이때 임의의 1차원 벡터 $\mathbf{v}$로 사영한 $Y$의 분산은 항상 0보다 커야하므로, $Var(Y) = \mathbf{v}^T \mathbf{\sum} \mathbf{v} \geqslant 0$여야 하고 양의 준정부호 행렬의 정의에 따라 공분산 행렬 $\mathbf{\sum}$은 항상 양의 준정부호 행렬이 됩니다.
+이때 임의의 1차원 벡터 $\bold{v}$로 사영한 $Y$의 분산은 항상 0보다 커야하므로, $Var(Y) = \bold{v}^T \bold{\sum} \bold{v} \geqslant 0$여야 하고 양의 준정부호 행렬의 정의에 따라 공분산 행렬 $\bold{\sum}$은 항상 양의 준정부호 행렬이 됩니다.
 
 
 ## Part.2 고윳값 분해의 정의와 공분산 행렬에의 적용
@@ -105,9 +105,9 @@ $$\begin{align} Var(\mathbf{Y}) &= Var(\mathbf{v}^T x) \\
 
 이제 우리는 대학에 와서 선형대수를 배우고 미분기하학을 배우고 하다보면 해석학에서 약간 벗어나는 **변환(Transformation)** 이라는 개념을 배웁니다! 변환을 처음 보면 용어도 낯설고 뭔지도 모르니 그냥 외워버리죠... 개인적으로 고등학생때 해석학만 주구장창 할게 아니라 선형대수도 배우고, 기하학도 배워야 한다고 생각합니다.
 
-각설하고, 함수가 해석학에서의 대응 규칙이였다면, 변환은 행렬에서의 대응 규칙(함수)라고 생각하시면 편할 것 같아요! 임의의 벡터 $\mathbf{x}$를 함수에 넣어서 $\mathbf{y}$를 얻었다면, $\mathbf{y} = f(\mathbf{x})$라면, 이때 $f$가 변환입니다! 행렬에서는 변환을 **행렬곱**을 통해 진행하게 되는 것이죠! 
+각설하고, 함수가 해석학에서의 대응 규칙이였다면, 변환은 행렬에서의 대응 규칙(함수)라고 생각하시면 편할 것 같아요! 임의의 벡터 $\bold{x}$를 함수에 넣어서 $\bold{y}$를 얻었다면, $\bold{y} = f(\bold{x})$라면, 이때 $f$가 변환입니다! 행렬에서는 변환을 **행렬곱**을 통해 진행하게 되는 것이죠! 
 
-예를 들어, 벡터 $\mathbf{x} = \begin{bmatrix} 3 \\ 4 \end{bmatrix}$에 $A = \begin{bmatrix} 2 & 0 \\ 0 & 2 \end{bmatrix}$를 곱한 $A\mathbf{x}=\begin{bmatrix} 6 \\ 8 \end{bmatrix} = \mathbf{y}$라 하면 $A$는 2차원상의 변환 행렬인 것이죠! 너무 쉽죠?? 특히 값을 보시면 아시겠지만, 행렬 $A$는 이차원 벡터를 스칼라 두 배 하는 일차 변환 행렬입니다! 수학II를 열심히 수강하신 분들이라면 아시겠죠 ㅎㅎ
+예를 들어, 벡터 $\bold{x} = \begin{bmatrix} 3 \\ 4 \end{bmatrix}$에 $A = \begin{bmatrix} 2 & 0 \\ 0 & 2 \end{bmatrix}$를 곱한 $A\bold{x}=\begin{bmatrix} 6 \\ 8 \end{bmatrix} = \bold{y}$라 하면 $A$는 2차원상의 변환 행렬인 것이죠! 너무 쉽죠?? 특히 값을 보시면 아시겠지만, 행렬 $A$는 이차원 벡터를 스칼라 두 배 하는 일차 변환 행렬입니다! 수학II를 열심히 수강하신 분들이라면 아시겠죠 ㅎㅎ
 
 일차변환, 이차변환, 다차원 변환에 대해서도 설명할 기회가 있으면 좋겠습니다! 여기서 설명하기에는 너무 길기도 하고 주제와도 벗어나니 직접 공부해 보시길 바랍니다.
 
@@ -117,40 +117,40 @@ $$\begin{align} Var(\mathbf{Y}) &= Var(\mathbf{v}^T x) \\
 
 $g1$이라는 원래의 벡터가 있고, 일종의 변환 행렬 $A$를 곱하여 $g2$라는 행렬을 얻었다고 해볼게요! 그럼 $A$는 하나의 변환 행렬이죠.
 
-이번에는 $g1$에 $B$라는 변환 행렬을 곱해, $\mathbf{x}$라는 벡터를 만들었다고 해볼게요!! 
+이번에는 $g1$에 $B$라는 변환 행렬을 곱해, $\bold{x}$라는 벡터를 만들었다고 해볼게요!! 
 
 두 operation의 차이를 아시겠나요...?? 맞습니다. $g2$와는 다르게 $x$는 원래 벡터인 $g1$과 방향이 같고 크기만 다릅니다. 되게 특수한 경우인 것이죠.
 
-그렇다면 임의의 변환 행렬 $A$에 대해, 방향은 바꾸지 않고 스케일만을 바꾸는 벡터 $\mathbf{x}$를 찾아낼 수 있을까요??
+그렇다면 임의의 변환 행렬 $A$에 대해, 방향은 바꾸지 않고 스케일만을 바꾸는 벡터 $\bold{x}$를 찾아낼 수 있을까요??
 
-즉, 다시 말해 $A\mathbf{x} = \lambda\mathbf{x}$를 만족하는 $\mathbf{x}$와 $\lambda$를 찾을 수 있을까요??
+즉, 다시 말해 $A\bold{x} = \lambda\bold{x}$를 만족하는 $\bold{x}$와 $\lambda$를 찾을 수 있을까요??
 
 ***네 가능합니다*** 그게 바로 고윳값, 고유벡터, 고윳값 분해의 정의입니다!!
 
-어떠한 행렬 $A$의 고윳값 벡터는, 행렬 A를 통해 벡터 $\mathbf{x}$의 변환을 시행했을 때 나오는 결과 벡터가 $\mathbf{x}$와 방향은 같고 스케일만이 다른 벡터입니다. 이때의 스케일 $\lambda$가 고윳값인 것이죠!! 너무 쉽죠??
+어떠한 행렬 $A$의 고윳값 벡터는, 행렬 A를 통해 벡터 $\bold{x}$의 변환을 시행했을 때 나오는 결과 벡터가 $\bold{x}$와 방향은 같고 스케일만이 다른 벡터입니다. 이때의 스케일 $\lambda$가 고윳값인 것이죠!! 너무 쉽죠??
 
-그럼 어떻게 구할까요?? $A\mathbf{x} = \lambda \mathbf{x}$를 정리하면
+그럼 어떻게 구할까요?? $A\bold{x} = \lambda \bold{x}$를 정리하면
 
-$$\begin{align} A\mathbf{x} - \lambda \mathbf{x} = 0 \\
-(A-\lambda I)\mathbf{x} = 0\end {align}$$
+$$\begin{align} A\bold{x} - \lambda \bold{x} = 0 \\
+(A-\lambda I)\bold{x} = 0\end {align}$$
 
 수학II에서 배웠다시피 해당 시스템이 자명해를 갖지 않기 위해서는 $\det(A-\lambda I) \neq 0$이어야 합니다!
 
 예를 들어 $A = \begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix}$ 라면, 위 조건을 적용하여, $A - \lambda I = \begin{bmatrix} 2-\lambda & 1 \\ 1 & 2 - \lambda \end{bmatrix}$이고, $\det(A-\lambda I) = \lambda^2 -4\lambda +3 = 0$,  $ \quad  \quad \therefore \lambda=1 \quad or \quad  \lambda=3$
 
-따라서 행렬 $A$의 고윳값은 1 또는 3이고, 각각의 고윳값일 때의 고유 벡터는, $\mathbf{x}_1 = \begin{bmatrix} 1 \\ -1 \end{bmatrix}$, $\mathbf{x}_2 = \begin{bmatrix} 1 \\ 1 \end{bmatrix}$ 입니다. 걍 대입해서 구하시면 돼요.
+따라서 행렬 $A$의 고윳값은 1 또는 3이고, 각각의 고윳값일 때의 고유 벡터는, $\bold{x}_1 = \begin{bmatrix} 1 \\ -1 \end{bmatrix}$, $\bold{x}_2 = \begin{bmatrix} 1 \\ 1 \end{bmatrix}$ 입니다. 걍 대입해서 구하시면 돼요.
 
-기하학적으로는, 두 벡터 $\mathbf{x}_1 \ \mathbf{x}_2$에 대해서는 행렬 $A = \begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix}$로 변환을 시행하더라도 각각 1배, 3배가 될 뿐, 방향이 변하지 않습니다. 
+기하학적으로는, 두 벡터 $\bold{x}_1 \ \bold{x}_2$에 대해서는 행렬 $A = \begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix}$로 변환을 시행하더라도 각각 1배, 3배가 될 뿐, 방향이 변하지 않습니다. 
 
-그럼 잠깐 앞서 예시로 들어드렸던, 스케일 변환 벡터 $A = \begin{bmatrix} 2 & 0 \\ 0 & 2 \end{bmatrix}$를 같은 방법으로 한 번 살펴볼까요?? $A- \lambda I = \begin{bmatrix} 2-\lambda & 0 \\ 0 & 2- \lambda \end{bmatrix}$ 이고, 해당 행렬의 determinant를 구해보면, $(2-\lambda)^2 = 0$이어야 하므로, $\lambda = 2$, 직접 대입해 보면, $\begin{bmatrix} 2 & 0 \\ 0 & 2 \end{bmatrix} \mathbf{x} = 2 \mathbf{x}$, $x = \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}$라 하면, $2x_1 = 2x_1$, $2x_2 = 2x_2$여서 모든 $\mathbf{x}$에 대해서 성립합니다! 모든 벡터가 고유벡터인 것이죠! (고윳값은 2니까 항상 두 배) 행렬 $A$는 벡터를 두 배 하도록 만든 변환 행렬이기 때문이죠.
+그럼 잠깐 앞서 예시로 들어드렸던, 스케일 변환 벡터 $A = \begin{bmatrix} 2 & 0 \\ 0 & 2 \end{bmatrix}$를 같은 방법으로 한 번 살펴볼까요?? $A- \lambda I = \begin{bmatrix} 2-\lambda & 0 \\ 0 & 2- \lambda \end{bmatrix}$ 이고, 해당 행렬의 determinant를 구해보면, $(2-\lambda)^2 = 0$이어야 하므로, $\lambda = 2$, 직접 대입해 보면, $\begin{bmatrix} 2 & 0 \\ 0 & 2 \end{bmatrix} \bold{x} = 2 \bold{x}$, $x = \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}$라 하면, $2x_1 = 2x_1$, $2x_2 = 2x_2$여서 모든 $\bold{x}$에 대해서 성립합니다! 모든 벡터가 고유벡터인 것이죠! (고윳값은 2니까 항상 두 배) 행렬 $A$는 벡터를 두 배 하도록 만든 변환 행렬이기 때문이죠.
 
 그럼 이제 본격적으로 **고윳값 분해**를 알아봅시다. 
 
-어떤 정방 행렬 $A \in \mathbb{R}^{n\times n}$에 대해 고윳값 $\lambda_1, \cdots,\lambda_n$이라고 하고 각각에 대응되는 고윳값 벡터들을 $\mathbf{v}_1, \cdots , \mathbf{v}_n$이라고 할 때, 
+어떤 정방 행렬 $A \in \mathbb{R}^{n\times n}$에 대해 고윳값 $\lambda_1, \cdots,\lambda_n$이라고 하고 각각에 대응되는 고윳값 벡터들을 $\bold{v}_1, \cdots , \bold{v}_n$이라고 할 때, 
 
-* $\mathbf{V} = [\mathbf{v}_1, \cdots, \mathbf{v}_n]$: 고유벡터들을 열벡터로 모든 행렬
+* $\bold{V} = [\bold{v}_1, \cdots, \bold{v}_n]$: 고유벡터들을 열벡터로 모든 행렬
 * $\Lambda = diag(\lambda_1, \cdots , \lambda_n)$: 대응하는 고윳값들을 대각에 둔 행렬
-* $A\mathbf{v}_i = \lambda_i \mathbf{v} _i$
+* $A\bold{v}_i = \lambda_i \bold{v} _i$
 
 위처럼 행렬 $A$를 우항처럼 쪼개는 것이 고윳값 분해입니다. 따라서 분해가 가능하려면, 반드시 $n$개의 고윳값을 가져야겠죠.
 
@@ -179,9 +179,9 @@ $$\begin{align} A\mathbf{x} - \lambda \mathbf{x} = 0 \\
 
 여러분! 기계학습 배우고 딥러닝 배우다 보면, Affine Layer라는 용어가 등장하지 않나요? 한 층을 통과한 Hidden Layer는
 
-$$\mathbf{h} = f(\mathbf{W}x + b)$$
+$$\bold{h} = f(\bold{W}x + b)$$
 
-잖아요?? ($\mathbf{W}$: 가중치 벡터, $f$: Activation Function, $b$: Bias) 이때 $Wx+b$ 연산을 Affine 연산이라 부르고, 해당 연산을 수행하는 Fully Connected Layer를 Affine 계층이라고 부르는 겁니다!
+잖아요?? ($\bold{W}$: 가중치 벡터, $f$: Activation Function, $b$: Bias) 이때 $Wx+b$ 연산을 Affine 연산이라 부르고, 해당 연산을 수행하는 Fully Connected Layer를 Affine 계층이라고 부르는 겁니다!
 
 즉, 다시 말해서 Affine 연산은 $Y=WX+b$로 나타나는, 선형 변환 이후, $b$만큼의 평행이동을 거치는 변환을 일컫습니다.
 
@@ -211,11 +211,11 @@ $$M_Y (t) = \exp\left(t^T b + (A^T t)^T \mu + \frac {1} {2} (A^T t)^T \sum (A^T 
 
 ### 2. 샘플링에 아핀 변환 적용하기
 
-우리는 종종 특정 분포에서 여러 샘플들을 추출해야 할 일이 생깁니다. 예를 들어 $N(\mathbf{\mu}, \mathbf{\sum})$에서 샘플 $x$를 추출하는 경우를 생각해 봅시다. 조금 까다롭죠??
+우리는 종종 특정 분포에서 여러 샘플들을 추출해야 할 일이 생깁니다. 예를 들어 $N(\bold{\mu}, \bold{\sum})$에서 샘플 $x$를 추출하는 경우를 생각해 봅시다. 조금 까다롭죠??
 
 어떻게 하면 쉽게 뽑을 수 있을까요?? 만약 매우 단순한 표준 정규 분포인 $N(0, I)$에서 추출한 $z$표본을 복원하여 $x$를 만들어낼 수 있다면 정말 좋겠죠???
 
-우선 $X\sim N(\mathbf{\mu}, \mathbf{\sum})$으로부터 $Y \sim N(0, I)$로 만드는 과정도 아핀과정입니다!! 타원 모양의 분포를 갖는 $X$ 데이터를 일차 변환을 이용해 원으로 만들고($W$를 곱함), 이후 평행이동 하면 ($Y=WX+b$로 표현되고) 해당 변환은 아핀변환입니다! 그러니, 당연하게도 결과도 정규분포인 것이죠.
+우선 $X\sim N(\bold{\mu}, \bold{\sum})$으로부터 $Y \sim N(0, I)$로 만드는 과정도 아핀과정입니다!! 타원 모양의 분포를 갖는 $X$ 데이터를 일차 변환을 이용해 원으로 만들고($W$를 곱함), 이후 평행이동 하면 ($Y=WX+b$로 표현되고) 해당 변환은 아핀변환입니다! 그러니, 당연하게도 결과도 정규분포인 것이죠.
 
 그럼 단순한 표준 정규분포 $Y$로부터 추출한 샘플 $z$를 $x$로 변환하는 과정을 알아봅시다!
 
@@ -225,13 +225,13 @@ $$M_Y (t) = \exp\left(t^T b + (A^T t)^T \mu + \frac {1} {2} (A^T t)^T \sum (A^T 
 
 따라서 정규분포 기댓값의 선형성과, 분산 성질에 의해 $X \sim N(A\mu_z + b, A\sum_z A^T)$가 성립합니다! 원래 $X \sim N(\mu, \sum)$이었으므로,
 
-$$ \begin{cases} A\mu_z + b = 0 + b = \mu \Rightarrow b = \mu \\ A \sum_z A^T = A\times I \times A^T = AA^T = \sum \Rightarrow \text{We need to find A that satisfies}\ AA^T = \sum \end{cases} $$
+$$ \begin{cases} A\mu_z + b = 0 + b = \mu \Rightarrow b = \mu \\A \sum_z A^T = A\times I \times A^T = AA^T = \sum \Rightarrow \text{We need to find A that satisfies}\ AA^T = \sum\end{cases} $$
 
 어렵지 않게 $b=\mu$는 찾을 수 있습니다. 이제 우리는 분산을 일치시키기 위해 $AA^T = \sum$을 만족하는 $A$를 찾아야 합니다! 
 
 이때 쓸 수 있는 분해가 바로 촐레스키 분해!! 촐레스키 분해란, 
 
-$$\exists L \in \mathbb{R}^{n \times n} \quad s.t. \ LL^T = A,\ \text{L은 하삼각행렬, A는 양의 정부호 행렬}$$
+$$\exist L \in \mathbb{R}^{n \times n} \quad s.t. \ LL^T = A,\ \text{L은 하삼각행렬, A는 양의 정부호 행렬}$$
 
 다만 행렬이 촐레스키 분해 되기 위해서는 반드시 대상이 되는 행렬이 양정치행렬(양의 정부호 행렬)이어야 합니다!!
 
@@ -248,9 +248,9 @@ $$\exists L \in \mathbb{R}^{n \times n} \quad s.t. \ LL^T = A,\ \text{L은 하�
 
 ### 3. 조건부 확률 분포
 
-MVN에 있어서 $P(\mathbf{x}_2 | \mathbf{x}_1)$은 $\mathbf{x}_1$과 무관하게 항상 MVN이다. 즉 다시말해서 조건부 확률 분포도 항상 MVN이라는 것입니다!! 
+MVN에 있어서 $P(\bold{x}_2 | \bold{x}_1)$은 $\bold{x}_1$과 무관하게 항상 MVN이다. 즉 다시말해서 조건부 확률 분포도 항상 MVN이라는 것입니다!! 
 
-이는 총 $m$차원의 MVN에서 $n$차원의 $\mathbf{x}_1$ 조건부 분포를 구한다는 것은 원래의 분포에서 $n$차원 만큼을 덜어내는 것과 같습니다!! 그만큼의 차원을 고정시키는 것이죠!
+이는 총 $m$차원의 MVN에서 $n$차원의 $\bold{x}_1$ 조건부 분포를 구한다는 것은 원래의 분포에서 $n$차원 만큼을 덜어내는 것과 같습니다!! 그만큼의 차원을 고정시키는 것이죠!
 
 예를 들어 이차원 결합 정규분포에 대해 1차원 $x_1=c$의 조건부 분포 $P(x_2 | x_1 = c)$는 하나의 차원을 $c$로 고정시킨 단일 정규분포가 되는 것이죠!!
 
@@ -297,3 +297,12 @@ $$\begin{align} {D_M}^2 & = (x-\mu)^T {\sum}^{-1} (x- \mu) \\
 
 
 이상으로 자습서 내용은 모두 끝입니다! 
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$', '$']]},
+    messageStyle: "none",
+    "HTML-CSS": { availableFonts: "TeX", preferredFont: "TeX" },
+  });
+</script>
