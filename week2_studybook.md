@@ -43,7 +43,7 @@ $-\frac{(x-\mu)^2} {2 \sigma^2}$를 고차원으로 바꿔가며 MVN으로 확�
 
 $$-\frac{(x-\mu)^2} {2 \sigma^2} = -\frac{1}{2} \times (x-\mu) \times \sigma^{-2} \times (x-\mu)$$
 
-에 대해 $\mathbf{x}=\begin{bmatrix} x1 \\ x2 \end{bmatrix}, \mathbf{\mu} =\begin{bmatrix} \mu1 \\ \mu2 \end{bmatrix} $라 하고 $\mathbf{\sum}$은 공분산 행렬이라 하면, 벡터의 내적 표현(제곱)에 의해 $-\frac{1}{2} \times (x-\mu) \times \sigma^{-2} \times (x-\mu)$는 아래와 같이 표현됩니다.
+에 대해 $\mathbf{x}=\begin{pmatrix} x1 \\ x2 \end{pmatrix}, \mathbf{\mu} =\begin{pmatrix} \mu1 \\ \mu2 \end{pmatrix} $라 하고 $\mathbf{\sum}$은 공분산 행렬이라 하면, 벡터의 내적 표현(제곱)에 의해 $-\frac{1}{2} \times (x-\mu) \times \sigma^{-2} \times (x-\mu)$는 아래와 같이 표현됩니다.
 
 $$-\frac{1}{2} \times (x-\mu) \times \sigma^{-2} \times (x-\mu) = -\frac{1} {2} (\mathbf{x}-\mathbf{\mu})^T {\mathbf{\sum}}^{-2}(\mathbf{x}-\mathbf{\mu})$$
 
@@ -107,7 +107,7 @@ $$\begin{align} Var(\mathbf{Y}) &= Var(\mathbf{v}^T x) \\
 
 각설하고, 함수가 해석학에서의 대응 규칙이였다면, 변환은 행렬에서의 대응 규칙(함수)라고 생각하시면 편할 것 같아요! 임의의 벡터 $\mathbf{x}$를 함수에 넣어서 $\mathbf{y}$를 얻었다면, $\mathbf{y} = f(\mathbf{x})$라면, 이때 $f$가 변환입니다! 행렬에서는 변환을 **행렬곱**을 통해 진행하게 되는 것이죠! 
 
-예를 들어, 벡터 $\mathbf{x} = \begin{bmatrix} 3 \\ 4 \end{bmatrix}$에 $A = \begin{bmatrix} 2 & 0 \\ 0 & 2 \end{bmatrix}$를 곱한 $A\mathbf{x}=\begin{bmatrix} 6 \\ 8 \end{bmatrix} = \mathbf{y}$라 하면 $A$는 2차원상의 변환 행렬인 것이죠! 너무 쉽죠?? 특히 값을 보시면 아시겠지만, 행렬 $A$는 이차원 벡터를 스칼라 두 배 하는 일차 변환 행렬입니다! 수학II를 열심히 수강하신 분들이라면 아시겠죠 ㅎㅎ
+예를 들어, 벡터 $\mathbf{x} = \begin{pmatrix} 3 \\ 4 \end{pmatrix}$에 $A = \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix}$를 곱한 $A\mathbf{x}=\begin{pmatrix} 6 \\ 8 \end{pmatrix} = \mathbf{y}$라 하면 $A$는 2차원상의 변환 행렬인 것이죠! 너무 쉽죠?? 특히 값을 보시면 아시겠지만, 행렬 $A$는 이차원 벡터를 스칼라 두 배 하는 일차 변환 행렬입니다! 수학II를 열심히 수강하신 분들이라면 아시겠죠 ㅎㅎ
 
 일차변환, 이차변환, 다차원 변환에 대해서도 설명할 기회가 있으면 좋겠습니다! 여기서 설명하기에는 너무 길기도 하고 주제와도 벗어나니 직접 공부해 보시길 바랍니다.
 
@@ -136,13 +136,13 @@ $$\begin{align} A\mathbf{x} - \lambda \mathbf{x} = 0 \\
 
 수학II에서 배웠다시피 해당 시스템이 자명해를 갖지 않기 위해서는 $\det(A-\lambda I) \neq 0$이어야 합니다!
 
-예를 들어 $A = \begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix}$ 라면, 위 조건을 적용하여, $A - \lambda I = \begin{bmatrix} 2-\lambda & 1 \\ 1 & 2 - \lambda \end{bmatrix}$이고, $\det(A-\lambda I) = \lambda^2 -4\lambda +3 = 0$,  $ \quad  \quad \therefore \lambda=1 \quad or \quad  \lambda=3$
+예를 들어 $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$ 라면, 위 조건을 적용하여, $A - \lambda I = \begin{pmatrix} 2-\lambda & 1 \\ 1 & 2 - \lambda \end{pmatrix}$이고, $\det(A-\lambda I) = \lambda^2 -4\lambda +3 = 0$,  $ \quad  \quad \therefore \lambda=1 \quad or \quad  \lambda=3$
 
-따라서 행렬 $A$의 고윳값은 1 또는 3이고, 각각의 고윳값일 때의 고유 벡터는, $\mathbf{x}_1 = \begin{bmatrix} 1 \\ -1 \end{bmatrix}$, $\mathbf{x}_2 = \begin{bmatrix} 1 \\ 1 \end{bmatrix}$ 입니다. 걍 대입해서 구하시면 돼요.
+따라서 행렬 $A$의 고윳값은 1 또는 3이고, 각각의 고윳값일 때의 고유 벡터는, $\mathbf{x}_1 = \begin{pmatrix} 1 \\ -1 \end{pmatrix}$, $\mathbf{x}_2 = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$ 입니다. 걍 대입해서 구하시면 돼요.
 
-기하학적으로는, 두 벡터 $\mathbf{x}_1 \ \mathbf{x}_2$에 대해서는 행렬 $A = \begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix}$로 변환을 시행하더라도 각각 1배, 3배가 될 뿐, 방향이 변하지 않습니다. 
+기하학적으로는, 두 벡터 $\mathbf{x}_1 \ \mathbf{x}_2$에 대해서는 행렬 $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$로 변환을 시행하더라도 각각 1배, 3배가 될 뿐, 방향이 변하지 않습니다. 
 
-그럼 잠깐 앞서 예시로 들어드렸던, 스케일 변환 벡터 $A = \begin{bmatrix} 2 & 0 \\ 0 & 2 \end{bmatrix}$를 같은 방법으로 한 번 살펴볼까요?? $A- \lambda I = \begin{bmatrix} 2-\lambda & 0 \\ 0 & 2- \lambda \end{bmatrix}$ 이고, 해당 행렬의 determinant를 구해보면, $(2-\lambda)^2 = 0$이어야 하므로, $\lambda = 2$, 직접 대입해 보면, $\begin{bmatrix} 2 & 0 \\ 0 & 2 \end{bmatrix} \mathbf{x} = 2 \mathbf{x}$, $x = \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}$라 하면, $2x_1 = 2x_1$, $2x_2 = 2x_2$여서 모든 $\mathbf{x}$에 대해서 성립합니다! 모든 벡터가 고유벡터인 것이죠! (고윳값은 2니까 항상 두 배) 행렬 $A$는 벡터를 두 배 하도록 만든 변환 행렬이기 때문이죠.
+그럼 잠깐 앞서 예시로 들어드렸던, 스케일 변환 벡터 $A = \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix}$를 같은 방법으로 한 번 살펴볼까요?? $A- \lambda I = \begin{pmatrix} 2-\lambda & 0 \\ 0 & 2- \lambda \end{pmatrix}$ 이고, 해당 행렬의 determinant를 구해보면, $(2-\lambda)^2 = 0$이어야 하므로, $\lambda = 2$, 직접 대입해 보면, $\begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix} \mathbf{x} = 2 \mathbf{x}$, $x = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}$라 하면, $2x_1 = 2x_1$, $2x_2 = 2x_2$여서 모든 $\mathbf{x}$에 대해서 성립합니다! 모든 벡터가 고유벡터인 것이죠! (고윳값은 2니까 항상 두 배) 행렬 $A$는 벡터를 두 배 하도록 만든 변환 행렬이기 때문이죠.
 
 그럼 이제 본격적으로 **고윳값 분해**를 알아봅시다. 
 
@@ -297,12 +297,3 @@ $$\begin{align} {D_M}^2 & = (x-\mu)^T {\sum}^{-1} (x- \mu) \\
 
 
 이상으로 자습서 내용은 모두 끝입니다! 
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {inlineMath: [['$', '$']]},
-    messageStyle: "none",
-    "HTML-CSS": { availableFonts: "TeX", preferredFont: "TeX" },
-  });
-</script>
