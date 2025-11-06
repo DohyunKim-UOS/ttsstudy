@@ -1,5 +1,3 @@
-# Week.2 다변수 정규 분포의 행렬 표현
-
 |발표자|자습서|과제제작|
 |-----|-----|------|
 |홍정민|김도현|이혜성|
@@ -11,7 +9,7 @@
 ### 1.1 MVN의 도입과 사용 이유
 다들 전공 수업을 통해 일변수 정규분포에 대해서는 충분히 공부하셨을 것이라 생각합니다. 
 
-$$f(x;\mu, \sigma^2) = \frac {1} {\sqrt{2 \pi \sigma^2 }} e^{-\frac {(x-\mu)^2}{2 \sigma^2}} $$
+$$f(x;\mu, \sigma^2) = \frac {1} {\sqrt{2 \pi \sigma^2 }} e^{-\frac {(x-\mu)^2}{2 \sigma^2}}$$
 
 위 식은 단일한 확률 변수 $X$에 대한 정규분포의 pdf입니다. 이때 $X$는 (확률) 변수, $\mu, \sigma^2$은 파라미터입니다. 변수는 함수의 출력값인 $y$를 결정짓는 요소, 파라미터는 함수 자체를 결정하는 요소라고 생각하시면 될 것 같아요. 
 
@@ -36,14 +34,20 @@ $$X:표본 공간 \rightarrow \mathbb{R}$$
 
 ### 1.2 MVN 수식 유도
 
-$$f(x;\mu, \sigma^2) = \frac {1} {\sqrt{2 \pi \sigma^2 }} e^{-\frac {(x-\mu)^2}{2 \sigma^2}} $$
+$$f(x;\mu, \sigma^2) = \frac {1} {\sqrt{2 \pi \sigma^2 }} e^{-\frac {(x-\mu)^2}{2 \sigma^2}}$$
 이 식부터 살펴봅시다. 이 식에서 expoinential 안에 있는 $-\frac{(x-\mu)^2} {2 \sigma^2}$은 사실 분포를 고려한 거리입니다. 분자의 $(x-\mu)^2$은 단순한 유클리드 거리(1차원 상)를 의미하고, 분모의 $2\sigma^2$은 분포에 따라 달라집니다. 따라서 분포를 고려한 거리인 셈이죠. (앞에 붙어있는 계수는 정규화계수로, pdf의 적분값이 1이 되도록 하기 위해 곱한 값입니다.)
 
 $-\frac{(x-\mu)^2} {2 \sigma^2}$를 고차원으로 바꿔가며 MVN으로 확장해 봅시다!
 
 $$-\frac{(x-\mu)^2} {2 \sigma^2} = -\frac{1}{2} \times (x-\mu) \times \sigma^{-2} \times (x-\mu)$$
 
-에 대해 $\mathbf{x}=\begin{pmatrix} x1 \\ x2 \end{pmatrix}, \mathbf{\mu} =\begin{pmatrix} \mu1 \\ \mu2 \end{pmatrix} $라 하고 $\mathbf{\sum}$은 공분산 행렬이라 하면, 벡터의 내적 표현(제곱)에 의해 $-\frac{1}{2} \times (x-\mu) \times \sigma^{-2} \times (x-\mu)$는 아래와 같이 표현됩니다.
+
+
+에 대해 
+
+$$\mathbf{x}=\begin{bmatrix} x1 \\ x2 \end{bmatrix}, \mathbf{\mu} =\begin{bmatrix} \mu1 \\ \mu2 \end{bmatrix}$$
+
+라 하고 $\mathbf{\sum}$ 은 공분산 행렬이라 하면, 벡터의 내적 표현(제곱)에 의해 $-\frac{1}{2} \times (x-\mu) \times \sigma^{-2} \times (x-\mu)$ 는 아래와 같이 표현됩니다.
 
 $$-\frac{1}{2} \times (x-\mu) \times \sigma^{-2} \times (x-\mu) = -\frac{1} {2} (\mathbf{x}-\mathbf{\mu})^T {\mathbf{\sum}}^{-2}(\mathbf{x}-\mathbf{\mu})$$
 
@@ -82,13 +86,21 @@ $$\frac {1} {n} \sum_{i=1} ^{n} {(\mathbf{X}_i - \mu)^2} = \sigma^2$$
 
 이런식으로 사영을 이용해 차원을 꾸겨 공분산 행렬을 1차원으로 바라보면 항상 양수여야 합니다!
 
-따라서 임의의 벡터 $\mathbf{v}$에 대해 $x$를 $v$에 스칼라사영한 벡터를 $Y$라 하면, 정의에 의해 
+따라서 임의의 벡터 $\mathbf{v}$ 에 대해 $x$를 $v$에 스칼라사영한 벡터를 $Y$라 하면, 정의에 의해 
 
 $$Y=\mathbf{v}^T x$$
-$$\begin{align} Var(\mathbf{Y}) &= Var(\mathbf{v}^T x) \\
-& = \mathbf{v}^T Var(x) (\mathbf{v}^T)^T\quad&(\because Var(Ax) = A^T Var(x) A)\\
-& = \mathbf{v}^T Var(x) \mathbf{v} &(\because (v^T)^T = v)\\
-& = \mathbf{v}^T \sum \mathbf{v} \end{align}$$
+
+이고,
+
+$$
+\begin{aligned}
+Var(\mathbf{Y}) &= Var(\mathbf{v}^T x) \\
+&= \mathbf{v}^T Var(x) (\mathbf{v}^T)^T \quad (\because Var(Ax) = A^T Var(x) A) \\
+&= \mathbf{v}^T Var(x) \mathbf{v} \quad (\because (v^T)^T = v) \\
+&= \mathbf{v}^T \Sigma \mathbf{v}
+\end{aligned}
+$$
+
 
 이때 임의의 1차원 벡터 $\mathbf{v}$로 사영한 $Y$의 분산은 항상 0보다 커야하므로, $Var(Y) = \mathbf{v}^T \mathbf{\sum} \mathbf{v} \geqslant 0$여야 하고 양의 준정부호 행렬의 정의에 따라 공분산 행렬 $\mathbf{\sum}$은 항상 양의 준정부호 행렬이 됩니다.
 
@@ -107,7 +119,7 @@ $$\begin{align} Var(\mathbf{Y}) &= Var(\mathbf{v}^T x) \\
 
 각설하고, 함수가 해석학에서의 대응 규칙이였다면, 변환은 행렬에서의 대응 규칙(함수)라고 생각하시면 편할 것 같아요! 임의의 벡터 $\mathbf{x}$를 함수에 넣어서 $\mathbf{y}$를 얻었다면, $\mathbf{y} = f(\mathbf{x})$라면, 이때 $f$가 변환입니다! 행렬에서는 변환을 **행렬곱**을 통해 진행하게 되는 것이죠! 
 
-예를 들어, 벡터 $\mathbf{x} = \begin{pmatrix} 3 \\ 4 \end{pmatrix}$에 $A = \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix}$를 곱한 $A\mathbf{x}=\begin{pmatrix} 6 \\ 8 \end{pmatrix} = \mathbf{y}$라 하면 $A$는 2차원상의 변환 행렬인 것이죠! 너무 쉽죠?? 특히 값을 보시면 아시겠지만, 행렬 $A$는 이차원 벡터를 스칼라 두 배 하는 일차 변환 행렬입니다! 수학II를 열심히 수강하신 분들이라면 아시겠죠 ㅎㅎ
+예를 들어, 벡터 $\mathbf{x} = \begin{bmatrix} 3 \\ 4 \end{bmatrix}$에 $A = \begin{bmatrix} 2 & 0 \\ 0 & 2 \end{bmatrix}$를 곱한 $A\mathbf{x}=\begin{bmatrix} 6 \\ 8 \end{bmatrix} = \mathbf{y}$라 하면 $A$는 2차원상의 변환 행렬인 것이죠! 너무 쉽죠?? 특히 값을 보시면 아시겠지만, 행렬 $A$는 이차원 벡터를 스칼라 두 배 하는 일차 변환 행렬입니다! 수학II를 열심히 수강하신 분들이라면 아시겠죠 ㅎㅎ
 
 일차변환, 이차변환, 다차원 변환에 대해서도 설명할 기회가 있으면 좋겠습니다! 여기서 설명하기에는 너무 길기도 하고 주제와도 벗어나니 직접 공부해 보시길 바랍니다.
 
@@ -121,7 +133,7 @@ $g1$이라는 원래의 벡터가 있고, 일종의 변환 행렬 $A$를 곱하�
 
 두 operation의 차이를 아시겠나요...?? 맞습니다. $g2$와는 다르게 $x$는 원래 벡터인 $g1$과 방향이 같고 크기만 다릅니다. 되게 특수한 경우인 것이죠.
 
-그렇다면 임의의 변환 행렬 $A$에 대해, 방향은 바꾸지 않고 스케일만을 바꾸는 벡터 $\mathbf{x}$를 찾아낼 수 있을까요??
+그렇다면 임의의 변환 행렬 $A$ 에 대해, 방향은 바꾸지 않고 스케일만을 바꾸는 벡터 $\mathbf{x}$를 찾아낼 수 있을까요??
 
 즉, 다시 말해 $A\mathbf{x} = \lambda\mathbf{x}$를 만족하는 $\mathbf{x}$와 $\lambda$를 찾을 수 있을까요??
 
@@ -131,22 +143,22 @@ $g1$이라는 원래의 벡터가 있고, 일종의 변환 행렬 $A$를 곱하�
 
 그럼 어떻게 구할까요?? $A\mathbf{x} = \lambda \mathbf{x}$를 정리하면
 
-$$\begin{align} A\mathbf{x} - \lambda \mathbf{x} = 0 \\
-(A-\lambda I)\mathbf{x} = 0\end {align}$$
+$\begin{aligned} A\mathbf{x} - \lambda \mathbf{x} = 0 \\
+(A-\lambda I)\mathbf{x} = 0\end {aligned}$
 
 수학II에서 배웠다시피 해당 시스템이 자명해를 갖지 않기 위해서는 $\det(A-\lambda I) \neq 0$이어야 합니다!
 
-예를 들어 $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$ 라면, 위 조건을 적용하여, $A - \lambda I = \begin{pmatrix} 2-\lambda & 1 \\ 1 & 2 - \lambda \end{pmatrix}$이고, $\det(A-\lambda I) = \lambda^2 -4\lambda +3 = 0$,  $ \quad  \quad \therefore \lambda=1 \quad or \quad  \lambda=3$
+예를 들어 $A = \begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix}$ 라면, 위 조건을 적용하여, $A - \lambda I = \begin{bmatrix} 2-\lambda & 1 \\ 1 & 2 - \lambda \end{bmatrix}$이고, $\det(A-\lambda I) = \lambda^2 -4\lambda +3 = 0$,  $\quad  \quad \therefore \lambda=1 \quad or \quad  \lambda=3$
 
-따라서 행렬 $A$의 고윳값은 1 또는 3이고, 각각의 고윳값일 때의 고유 벡터는, $\mathbf{x}_1 = \begin{pmatrix} 1 \\ -1 \end{pmatrix}$, $\mathbf{x}_2 = \begin{pmatrix} 1 \\ 1 \end{pmatrix}$ 입니다. 걍 대입해서 구하시면 돼요.
+따라서 행렬 $A$의 고윳값은 1 또는 3이고, 각각의 고윳값일 때의 고유 벡터는, $\mathbf{x}_1 = \begin{bmatrix} 1 \\ -1 \end{bmatrix}$, $\mathbf{x}_2 = \begin{bmatrix} 1 \\ 1 \end{bmatrix}$ 입니다. 걍 대입해서 구하시면 돼요.
 
-기하학적으로는, 두 벡터 $\mathbf{x}_1 \ \mathbf{x}_2$에 대해서는 행렬 $A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$로 변환을 시행하더라도 각각 1배, 3배가 될 뿐, 방향이 변하지 않습니다. 
+기하학적으로는, 두 벡터 $\mathbf{x}_1 \ \mathbf{x}_2$ 에 대해서는 행렬 $A = \begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix}$로 변환을 시행하더라도 각각 1배, 3배가 될 뿐, 방향이 변하지 않습니다. 
 
-그럼 잠깐 앞서 예시로 들어드렸던, 스케일 변환 벡터 $A = \begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix}$를 같은 방법으로 한 번 살펴볼까요?? $A- \lambda I = \begin{pmatrix} 2-\lambda & 0 \\ 0 & 2- \lambda \end{pmatrix}$ 이고, 해당 행렬의 determinant를 구해보면, $(2-\lambda)^2 = 0$이어야 하므로, $\lambda = 2$, 직접 대입해 보면, $\begin{pmatrix} 2 & 0 \\ 0 & 2 \end{pmatrix} \mathbf{x} = 2 \mathbf{x}$, $x = \begin{pmatrix} x_1 \\ x_2 \end{pmatrix}$라 하면, $2x_1 = 2x_1$, $2x_2 = 2x_2$여서 모든 $\mathbf{x}$에 대해서 성립합니다! 모든 벡터가 고유벡터인 것이죠! (고윳값은 2니까 항상 두 배) 행렬 $A$는 벡터를 두 배 하도록 만든 변환 행렬이기 때문이죠.
+그럼 잠깐 앞서 예시로 들어드렸던, 스케일 변환 벡터 $A = \begin{bmatrix} 2 & 0 \\ 0 & 2 \end{bmatrix}$를 같은 방법으로 한 번 살펴볼까요?? $A- \lambda I = \begin{bmatrix} 2-\lambda & 0 \\ 0 & 2- \lambda \end{bmatrix}$ 이고, 해당 행렬의 determinant를 구해보면, $(2-\lambda)^2 = 0$이어야 하므로, $\lambda = 2$, 직접 대입해 보면, $\begin{bmatrix} 2 & 0 \\ 0 & 2 \end{bmatrix} \mathbf{x} = 2 \mathbf{x}$, $x = \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}$라 하면, $2x_1 = 2x_1$, $2x_2 = 2x_2$여서 모든 $\mathbf{x}$ 에 대해서 성립합니다! 모든 벡터가 고유벡터인 것이죠! (고윳값은 2니까 항상 두 배) 행렬 $A$는 벡터를 두 배 하도록 만든 변환 행렬이기 때문이죠.
 
 그럼 이제 본격적으로 **고윳값 분해**를 알아봅시다. 
 
-어떤 정방 행렬 $A \in \mathbb{R}^{n\times n}$에 대해 고윳값 $\lambda_1, \cdots,\lambda_n$이라고 하고 각각에 대응되는 고윳값 벡터들을 $\mathbf{v}_1, \cdots , \mathbf{v}_n$이라고 할 때, 
+어떤 정방 행렬 $A \in \mathbb{R}^{n\times n}$ 에 대해 고윳값 $\lambda_1, \cdots,\lambda_n$이라고 하고 각각에 대응되는 고윳값 벡터들을 $\mathbf{v}_1, \cdots , \mathbf{v}_n$이라고 할 때, 
 
 * $\mathbf{V} = [\mathbf{v}_1, \cdots, \mathbf{v}_n]$: 고유벡터들을 열벡터로 모든 행렬
 * $\Lambda = diag(\lambda_1, \cdots , \lambda_n)$: 대응하는 고윳값들을 대각에 둔 행렬
@@ -225,7 +237,7 @@ $$M_Y (t) = \exp\left(t^T b + (A^T t)^T \mu + \frac {1} {2} (A^T t)^T \sum (A^T 
 
 따라서 정규분포 기댓값의 선형성과, 분산 성질에 의해 $X \sim N(A\mu_z + b, A\sum_z A^T)$가 성립합니다! 원래 $X \sim N(\mu, \sum)$이었으므로,
 
-$$ \begin{cases} A\mu_z + b = 0 + b = \mu \Rightarrow b = \mu \\ A \sum_z A^T = A\times I \times A^T = AA^T = \sum \Rightarrow \text{We need to find A that satisfies}\ AA^T = \sum \end{cases} $$
+$$\begin{cases} A\mu_z + b = 0 + b = \mu \Rightarrow b = \mu \\ A \sum_z A^T = A\times I \times A^T = AA^T = \sum \Rightarrow \text{We need to find A that satisfies}\ AA^T = \sum \end{cases}$$
 
 어렵지 않게 $b=\mu$는 찾을 수 있습니다. 이제 우리는 분산을 일치시키기 위해 $AA^T = \sum$을 만족하는 $A$를 찾아야 합니다! 
 
@@ -269,8 +281,7 @@ MVN에 있어서 $P(\mathbf{x}_2 | \mathbf{x}_1)$은 $\mathbf{x}_1$과 무관하
 
 앞서 등장한 식 (a) $x = \mu + Lz$를 다시 활용해 봅시다.
 
-$$ \begin{align} x = \mu + Lz & \Rightarrow Lz = x - \mu \\
-&\Rightarrow z = L^{-1}(x-\mu) \end{align}$$
+$$\begin{aligned} x = \mu + Lz & \Rightarrow Lz = x - \mu \\ &\Rightarrow z = L^{-1}(x-\mu) \end{aligned}$$
 
 이러한 연산을 통해 만든 새로운 분포 $L$은 기존 분포의 통계적 유의성을 어느정도 보존하면서 분석하기 쉬운 표준정규분포의 형태로 바꾸어 줍니다. 이때 백색화된 새로운 분포 상에서의 유클리드 거리는 마할라노비스 거리와 항상 같습니다!!
 
@@ -288,12 +299,9 @@ $$ \begin{align} x = \mu + Lz & \Rightarrow Lz = x - \mu \\
 
 * 마할라노비스 거리 ${D_M}^2 = (x-\mu)^T \sum^{-1} (x-\mu)$
 
+proof)
 $${\sum}^{-1} = (LL^T)^{-1} = (L^T)^{-1}(L^{-1})$$
-$$\begin{align} {D_M}^2 & = (x-\mu)^T {\sum}^{-1} (x- \mu) \\
-& = (s- \mu)^T (L^T)^{-1}L^{-1}(x-\mu) \\
+
+$$\begin{aligned} {D_M}^2 & = (x-\mu)^T {\sum}^{-1} (x- \mu) \\ & = (s- \mu)^T (L^T)^{-1}L^{-1}(x-\mu) \\
 & = [L^{-1}(x-\mu)]^T [L^{-1}(x-\mu)] \\
-& = z^T z = {D_E}^2
-\end{align} $$
-
-
-이상으로 자습서 내용은 모두 끝입니다! 
+& = z^T z = {D_E}^2 \quad \blacksquare \end{aligned}$$
